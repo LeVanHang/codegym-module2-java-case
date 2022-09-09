@@ -1,6 +1,7 @@
 package view;
 
 import controller.AccountController;
+
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ public class Main implements Serializable {
     public static void main(String[] args) {
         Main.menuMain();
     }
+
     public static void menuMain() {
         Scanner scanner = new Scanner(System.in);
         AccountController accountController = new AccountController();

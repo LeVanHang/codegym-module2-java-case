@@ -15,19 +15,19 @@ public class MenuCutomer {
         int chon = -1;
         do {
             System.out.println(" >>>>>>>>   Menu Cutomer  <<<<<<<");
-            System.out.println("|       1. Hien thi danh sach san pham      ");
-            System.out.println("|       2. Tim kiem san pham theo ten        ");
-            System.out.println("|       3. Sap xep cac san pham theo gia         ");
-            System.out.println("|       4. Tim san pham co gia cao nhat         ");
-            System.out.println("|       5. Doi mat khau         ");
-            System.out.println("|       6. Doi ten tai khoan         ");
-            System.out.println("|       0. Dang xuat                              ");
+            System.out.println("|       1. Display List sản phẩm      ");
+            System.out.println("|       2. Search sản phẩm theo name        ");
+            System.out.println("|       3. sort sản phẩm theo giá        ");
+            System.out.println("|       4. tìm sản phẩm có giá cao nhất         ");
+            System.out.println("|       5. change pass         ");
+            System.out.println("|       6. change name acc         ");
+            System.out.println("|       0. Đăng xuất                              ");
             System.out.println(" ----------------------------------------------");
-            System.out.print("   ------>Vui long chon chuc nang: ");
+            System.out.print("   ------>Vui lòng chọn chức năng: ");
             try {
                 chon = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
-                System.err.println("Chuc nang khong ton tai ! vui long chon lai: ");
+                System.err.println("chức năng không tồn tại: ");
             }
 
             switch (chon) {
