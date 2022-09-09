@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Account implements Comparable<Account>, Serializable {
+public class Account implements Comparable<Account>, Serializable {
     private String name, password;
 
     public Account() {
