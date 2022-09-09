@@ -32,7 +32,7 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public double getPrice(double price) {
+    public double getPrice() {
         return this.price;
     }
 

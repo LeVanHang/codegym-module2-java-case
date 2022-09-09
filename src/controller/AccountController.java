@@ -1,7 +1,9 @@
 package controller;
 
-import com.sun.tools.javac.Main;
+import view.MenuAdmin;
+import view.MenuCutomer;
 import model.Account;
+import view.Main;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -39,17 +41,17 @@ public class AccountController {
         String none1 = "";
         String none2 = " ";
         if (name.equals(adm)) {
-            System.err.print("Account đã tồn tại:");
+            System.err.print("Tai khoan da ton tai ! vui long nhap ten khac :");
             return true;
         }
         if (name.equals(none1) || name.startsWith(none2)) {
-            System.err.print("Không để trống account name: ");
+            System.err.print("Khong de trong ten tai khoan ! vui long nhap lai: ");
             return true;
         }
 
         for (int i = 0; i < accounts.size(); i++) {
             if (accounts.get(i).getName().equals(name)) {
-                System.err.print("Account đã tồn tại: ");
+                System.err.print("Tai khoan da ton tai, vui long nhap ten khac: ");
                 return true;
             }
         }
@@ -59,7 +61,7 @@ public class AccountController {
         String none1 = "";
         String none2 = " ";
         if (password.equals(none1) || password.startsWith(none2)) {
-            System.err.print("Pleace enter password: ");
+            System.err.print("Khong de trong mat khau ! vui long nhap lai: ");
             return true;
         }
         return false;
@@ -72,28 +74,28 @@ public class AccountController {
         for (Account a : accounts) {
             if (account.getName().equals(a.getName()) && account.getPassword().equals(a.getPassword())) {
                 check = true;
-                System.out.println("Chào mừng đến với bình nguyên vô tận !");
+                System.out.println("Dang nhap thanh cong !");
                 MenuCutomer.menuCutomer();
             }
         }
         if (!check) {
-            System.err.println("Đố biết sai ở đâu Pleace enter NOW");
+            System.err.println("Sai ten dang nhap hoac mat khau , vui long nhap lai");
         }
     }
     public Account createAccount(Scanner scanner) {
-        System.out.print("Account name: ");
+        System.out.print("Ten tai khoan: ");
         Pattern p = Pattern.compile("[a-zA-Z0-9]{6,18}$");
         String name = scanner.nextLine();
         while (!p.matcher(name).find()) {
             if (!p.matcher(name).find()) {
-                System.err.println("Sai quy tắc tạo tài khoản, vui lòng nhập lại: ");
+                System.err.println("Sai quy tac tao tai khoan ! vui long nhap lai: ");
                 name = scanner.nextLine();
             }
         }
         while (checkRegisteredName(name)) {
             name = scanner.nextLine();
         }
-        System.out.print("Enter password: ");
+        System.out.print("Nhap mat khau: ");
         String password = scanner.nextLine();
         while (checkRegistrationPassword(password)) {
             password = scanner.nextLine();
@@ -103,20 +105,20 @@ public class AccountController {
     public void addAucount(Scanner scanner) {
         Account account = createAccount(scanner);
         accounts.add(account);
-        System.out.println("Chào mừng đến với bình nguyên vô tận, mời chọn đăng nhập");
+        System.out.println("Dang ky thanh cong , vui long chon dang nhap");
         writeData(accounts);
         Main.menuMain();
     }
     public void login(Scanner scanner) {
         int count = 0;
         do {
-            System.out.print("Account name ");
+            System.out.print("Ten dang nhap: ");
             String name = scanner.nextLine();
-            System.out.print("Password: ");
+            System.out.print("Mat khau dang nhap: ");
             String password = scanner.nextLine();
             Account account = new Account(name, password);
             if (checkAdmin(account)) {
-                System.out.println("oKaEri admiN");
+                System.out.println("Dang nhap thanh cong , xin chao Amdin!");
                 MenuAdmin.menuAdmin();
             } else {
                 checkLogin(account);
@@ -124,7 +126,7 @@ public class AccountController {
             count++;
         }
         while (count < 3) ;
-        System.err.println("Nhập sai quá số lần cho phép, chạy lại trương trình");
+        System.err.println("Nhap sai qua nhieu, vui long chay lai chuong trinh");
         System.exit(0);
     }
     public void displayAccount() {
@@ -134,54 +136,54 @@ public class AccountController {
             check = true;
         }
         if (!check) {
-            System.err.println("Chưa có acconnt trong hệ thống, chọn 0 để quay lại trang chủ để đăng ký");
+            System.err.println("Chua co tai khoan nao trong he thong, vui long nhan 0 de tro ve Trang Chu va chon dang ky");
         }
     }
     public void deleteAccount(Scanner scanner) {
         boolean check = false;
-        System.out.print("Enter account muốn xóa: ");
+        System.out.print("Nhap ten tai khoan muon xoa: ");
         String name = scanner.nextLine();
         for (int i = 0; i < accounts.size(); i++) {
             if (accounts.get(i).getName().equals(name)) {
                 accounts.remove(i);
                 check = true;
-                System.out.println("Delete thành công");
+                System.out.println("Xoa tai khoan thanh cong");
                 writeData(accounts);
             }
         }
         if (!check) {
-            System.err.println("Account không tồn tại !");
+            System.err.println("Tai khoan khong ton tai !");
         }
     }
     public void changePassword(Scanner scanner) {
-        System.out.print("Enter password hiện tại: ");
+        System.out.print("Nhap mat khau hien tai: ");
         String password = scanner.nextLine();
         for (int i = 0 ; i < accounts.size() ; i++){
             if (accounts.get(i).getPassword().equals(password)){
-                System.out.print("New password: ");
+                System.out.print("Nhap mat khau moi: ");
                 String password1 = scanner.nextLine();
                 accounts.get(i).setPassword(password1);
-                System.out.println("change password thành công !");
+                System.out.println("Thay doi mat khau thanh cong !");
                 writeData(accounts);
             }
         }
     }
     public void changeLoginName(Scanner scanner) {
-        System.out.print("Enter name hiện tại: ");
+        System.out.print("Nhap ten hien tai: ");
         String name = scanner.nextLine();
         for (Account account : accounts) {
             if (account.getName().equals(name)) {
-                System.out.print("name new: ");
+                System.out.print("Nhap ten moi: ");
                 String name1 = scanner.nextLine();
                 account.setName(name1);
-                System.out.println("thành công change name!");
+                System.out.println("Doi ten tai khoan thanh cong !");
                 writeData(accounts);
             }
         }
     }
     public void findAccountByName(Scanner scanner) {
         boolean check = false;
-        System.out.print("Enter account find: ");
+        System.out.print("Nhap ten tai khoan can tim: ");
         String name = scanner.nextLine();
         for (Account account : accounts) {
             if (account.getName().equalsIgnoreCase(name)) {
@@ -190,13 +192,13 @@ public class AccountController {
             }
         }
         if (!check) {
-            System.out.println("Không find thấy account name: " + name);
+            System.out.println("Khong tim thay tai khoan co ten la: " + name);
         }
     }
     public void sortAccountByName() {
         readData();
         Collections.sort(accounts);
-        System.out.println("List account theo name:");
+        System.out.println("Danh sach tai khoan da sap xep theo ten:");
         displayAccount();
     }
 }
