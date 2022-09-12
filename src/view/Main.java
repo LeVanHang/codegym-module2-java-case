@@ -16,15 +16,15 @@ public class Main implements Serializable {
         accountController.readData();
         int chon = -1;
         System.out.println("*****************************");
-        System.out.println("------------->Trang Chủ<-------------");
-        System.out.println("**          1. Đăng Nhập              **");
-        System.out.println("**          2. Đăng Ký                  **");
+        System.out.println("------------->Trang Chu<-------------");
+        System.out.println("**          1. Dang Nhap              **");
+        System.out.println("**          2. Đang Ky                  **");
         System.out.println("------------------------------------------");
-        System.out.println("**          0. Thoát Hệ Thống        **");
+        System.out.println("**          0. Thoat He Thong        **");
         System.out.println("*****************************");
         do {
 
-            System.out.print("  --> Vui Lòng Chọn Chức Năng:");
+            System.out.print("  --> Vui Long Chon Chuc Nang:");
             try {
                 chon = Integer.parseInt(scanner.nextLine());
 
