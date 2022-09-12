@@ -165,6 +165,7 @@ public class AccountController {
                 accounts.get(i).setPassword(password1);
                 System.out.println("Change pass thanh cong !");
                 writeData(accounts);
+                Main.menuMain();
             }
         }
     }
@@ -178,6 +179,7 @@ public class AccountController {
                 account.setName(name1);
                 System.out.println("change name thanh cong!");
                 writeData(accounts);
+                Main.menuMain();
             }
         }
     }
