@@ -45,15 +45,15 @@ public class ProductController implements Serializable {
     }
 
     public Product createProduct(Scanner scanner) {
-        System.out.print("Mã sản phẩm: ");
+        System.out.print("id product: ");
         int id = Integer.parseInt(scanner.nextLine());
         while (checkId(id)) {
-            System.err.println("Mã sản phẩm đã tồn tại, vui lòng nhập mã khác:");
+            System.err.println("id da ton tai, enter id khac:");
             id = Integer.parseInt(scanner.nextLine());
         }
-        System.out.print("Name sản phẩm: ");
+        System.out.print("Name product ");
         String name = scanner.nextLine();
-        System.out.print("Giá sản phẩm: ");
+        System.out.print("nedan product: ");
         double price = Double.parseDouble(scanner.nextLine());
         return new Product(id, name, price);
     }
@@ -61,49 +61,49 @@ public class ProductController implements Serializable {
     public void addProduct(Scanner scanner) {
         Product product = createProduct(scanner);
         products.add(product);
-        System.out.println("Add sản phẩm thành công !");
+        System.out.println("Add product !");
         writeData(products);
     }
 
     public void updateProductById(Scanner scanner) {
         boolean check = false;
-        System.out.print("Nhập mã sản phẩm muốn sửa: ");
+        System.out.print("enter id muon sua ");
         int id = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getId() == id) {
                 check = true;
-                System.out.print("Mã sản phẩm mới: ");
+                System.out.print("new id product ");
                 int id1 = Integer.parseInt(scanner.nextLine());
-                System.out.print("Tên mới: ");
+                System.out.print("new name");
                 String name1 = scanner.nextLine();
-                System.out.print("Giá mới: ");
+                System.out.print("new nedan ");
                 double price = Double.parseDouble(scanner.nextLine());
                 products.get(i).setId(id1);
                 products.get(i).setName(name1);
                 products.get(i).setPrice(price);
-                System.out.println("Sửa thông tin sản phẩm thành công !");
+                System.out.println("sua infor product thanh cong !");
                 writeData(products);
             }
         }
         if (!check) {
-            System.err.println("Không find thấy sản phẩm ! " + id);
+            System.err.println("Khong find product ! " + id);
         }
     }
 
     public void deleteProductById(Scanner scanner) {
         boolean check = false;
-        System.out.print("Nhập mã sản phẩm cần delete: ");
+        System.out.print("enter id can delete: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getId() == id) {
                 products.remove(i);
-                System.out.println("Delete sản phẩm thành công !");
+                System.out.println("Delete product thanh cong!");
                 writeData(products);
                 check = true;
             }
         }
         if (!check) {
-            System.err.println("Không find thấy sản phẩm ! " + id);
+            System.err.println("Khong find product! " + id);
         }
     }
 
@@ -114,13 +114,13 @@ public class ProductController implements Serializable {
             check = true;
         }
         if (!check) {
-            System.err.println("Chưa có sản phẩm trong hệ thống !");
+            System.err.println("Chua co product trong he thong !");
         }
     }
 
     public void searchProductByName(Scanner scanner) {
         boolean check = false;
-        System.out.print("Enter name sản phẩm cần search: ");
+        System.out.print("Enter name product can search: ");
         String name = scanner.nextLine();
         for (Product product : products) {
             if (product.getName().contains(name)) {
@@ -129,7 +129,7 @@ public class ProductController implements Serializable {
             }
         }
         if (!check) {
-            System.err.println("Không tìm thấy sản phẩm có name là: " + name);
+            System.err.println("khong search product co name la" + name);
         }
     }
 
@@ -141,7 +141,7 @@ public class ProductController implements Serializable {
             }
         };
         products.sort(comparator);
-        System.out.println("List sản phẩm đã được sort theo giá tăng dần: ");
+        System.out.println("List product sort theo gia tang dan ");
         displayAllProduct();
     }
     public void sortProductById(){
@@ -152,7 +152,7 @@ public class ProductController implements Serializable {
             }
         };
         products.sort(comparator);
-        System.out.println("List sản phẩm đã được sort theo mã số tăng dần ");
+        System.out.println("List product duoc sort theo id tang dan ");
         displayAllProduct();
     }
 
@@ -164,7 +164,7 @@ public class ProductController implements Serializable {
             }
         };
         products.sort(comparator);
-        System.out.println("List sản phẩm đã được sort theo giá giảm dần ");
+        System.out.println("List product da duoc sort theo gia giam dan ");
         displayAllProduct();
     }
 
@@ -177,21 +177,21 @@ public class ProductController implements Serializable {
                 product = i;
             }
         }
-        System.out.println("Sản phẩm có giá cao nhất trông hệ thống là: ");
+        System.out.println("San pham co gia cao nhat trong he thong ");
         System.out.println(products.get(product));
     }
 
     public void sortProductByPrice(Scanner scanner) {
         int choose = -1;
         do {
-            System.out.println("1. sort theo giá sản phẩm (tăng dần)");
-            System.out.println("2. sort theo giá sản phẩm (giảm dần)");
-            System.out.println("3. sort sản phẩm theo mả số (tăng dần) ");
-            System.out.println("0. quay về Menu");
+            System.out.println("1. sort theo gia product (tang dan)");
+            System.out.println("2. sort theo gia product (giam dan)");
+            System.out.println("3. sort product theo id (tang dan) ");
+            System.out.println("0. quay ve Menu");
             try {
                 choose = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
-                System.err.println("Chưc năng không tồn tại: ");
+                System.err.println("Chuc nang khong ton tai: ");
             }
             switch (choose) {
                 case 1 -> sortProductsByPriceAscending();

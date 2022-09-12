@@ -15,23 +15,23 @@ public class MenuAdmin {
         int choose = -1;
         do {
             System.out.println(" >>>>>>>>   Menu AdmiN <<<<<<<");
-            System.out.println("|       1. Thêm sản phẩm mới    ");
-            System.out.println("|       2. Sữa thông tin sản phẩm theo mã sản phẩm        ");
-            System.out.println("|       3. Xóa sản phẩm theo mã số sản phẩm        ");
-            System.out.println("|       4. Hiển thị danh sách tất cả sản phẩm         ");
-            System.out.println("|       5. Tìm kiếm sản phẩm theo tên       ");
-            System.out.println("|       6. Sắp xếp các sản phẩm theo giá");
-            System.out.println("|       7. Tìm sản phẩm có giá cao nhất ");
-            System.out.println("|       8. Hiển thị danh sách các tài khoản ");
-            System.out.println("|       9. Xóa tài khoản theo tên ");
-            System.out.println("|       10. Sắp xếp tài khoản theo tên ");
-            System.out.println("|       0. Đăng xuất                             ");
+            System.out.println("|       1. add new product    ");
+            System.out.println("|       2. Sua infor product theo i        ");
+            System.out.println("|       3. Delete product theo id product        ");
+            System.out.println("|       4. Display List all product         ");
+            System.out.println("|       5. Find product theo name      ");
+            System.out.println("|       6. Sort product theo gia");
+            System.out.println("|       7. Find product co gia max ");
+            System.out.println("|       8. Diaplay list cac acc  ");
+            System.out.println("|       9. Delete acc theo name ");
+            System.out.println("|       10.Sort acc theo name ");
+            System.out.println("|       0. Dang xuat                             ");
             System.out.println(" ----------------------------------------------");
-            System.out.print("   ------> Vui lòng chọn chức năng: ");
+            System.out.print("   ------> Vui Long Chon Chuc Nang ");
             try {
                 choose = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
-                System.err.println("Chức năng không tồn tại: ");
+                System.err.println("Chuc Nang Khong Ton Tai ");
             }
             switch (choose) {
                 case 1 -> productController.addProduct(scanner);
